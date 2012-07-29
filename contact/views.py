@@ -19,7 +19,9 @@ def contact(request):
             )
             return HttpResponseRedirect('/contact/thanks/')
     else:
-            form = ContactForm()
+        form = ContactForm(
+                initial={'subject': 'I love your site!'}
+        )
     csrf_form = {'form': form}
     csrf_form.update(csrf(request))
     return render_to_response('contact_form.html', csrf_form) 

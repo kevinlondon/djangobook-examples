@@ -1,4 +1,20 @@
 <html>
+
+<style type="text/css">
+    ul.errorlist {
+        margin: 0;
+        padding: 0;
+    }
+    .errorlist li {
+        background-color: red;
+        color: white;
+        display: block;
+        font-size: 10px;
+        margin: 0 0 3px;
+        padding: 4px 5px;
+    }
+</style>
+
 <head>
     <title>Contact Us</title>
 </head>
@@ -12,9 +28,21 @@
     {% endif %}
 
     <form action="" method="post">{% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
+        <div class="field">
+            {{ form.subject.errors }}
+            <label for="id_subject">Subject:</label>
+            {{ form.subject }}
+        </div>
+        <div class="field">
+            {{ form.email.errors }}
+            <label for="id_email">Your email address:</label>
+            {{ form.email }}
+        </div>
+        <div class="field">
+            {{ form.message.errors }}
+            <label for="id_message">Message:</label>
+            {{ form.message }}
+        </div>
         <input type="submit" value="Submit">
     </form>
 </body>
