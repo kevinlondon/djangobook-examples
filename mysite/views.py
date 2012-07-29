@@ -17,3 +17,7 @@ def hours_ahead(request, offset):
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
     rdict = {"hour_offset": offset, "next_time": dt}
     return render_to_response('hours_ahead.html', rdict)
+
+def display_meta(request):
+    return render_to_response('meta.html', {'meta_values': request.META.items()})
+
